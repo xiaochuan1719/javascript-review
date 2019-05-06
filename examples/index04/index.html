@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        
+        let arr = ['1', '2', '3']
+
+        // let new_array = arr.map(function(cur_value, index, array) {
+        //     console.log('cur_value: ' + cur_value + ' ,index: ' + index);
+        // });
+
+        let new_array = arr.map(parseInt);
+        console.log(new_array);  // [1, NaN, NaN]
+
+        // 实际代码如下所示
+        // let new_array = arr.map(parseInt(value, index));
+
+    </script>
+    
+</body>
+</html>

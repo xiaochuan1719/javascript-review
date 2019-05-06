@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <div>
+        <input type="text" class="one ok error">
+        <input type="text" class="two ok">
+    </div>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@1.11.3/dist/jquery.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/zepto@1.2.0/dist/zepto.js"></script> -->
+    <script>
+
+        // 必须等到页面内容包括图片的所有元素加载完成后才能执行
+        window.onload = function() {
+            $('input.one').removeClass('ok error').addClass('ing');
+            $('input.two').removeClass('ok error').addClass('done');
+        };
+
+        // window.onload 在 jquery中的替代者
+        // $(window).load(function() {
+        //     $('input.one').removeClass('ok error').addClass('ing');
+        // });
+
+        // DOM结构绘制完成后就执行，不必等到加载完成
+        $(document).ready(function() {
+            $('input.one').removeClass('ok error').addClass('ing');
+            $('input.two').removeClass('ok error').addClass('done');
+        });
+
+        // $(document).ready(function() {}) 的简化写法
+        // $(function() {
+        //     $('input.one').removeClass('ok error').addClass('ing');
+        //     $('input.two').removeClass('ok error').addClass('done');
+        // });
+
+
+    </script>
+    
+</body>
+</html>
