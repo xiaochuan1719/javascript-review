@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>Canvas</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="300" height="300"></canvas>
+
+    <script>
+
+        draw(13, 5 / 6 * Math.PI);
+        
+        function draw(percent, sR) {
+            
+            if (percent < 0 || percent > 100) {
+                return;
+            }
+
+            if (sR < Math.PI / 2 || sR >= 3 / 2 * Math.PI ) {
+                return;
+            }
+
+            var canvas = document.getElementById('canvas'),
+                ctx = canvas.getContext('2d'),
+                cWidth = canvas.width,
+                cHeight = canvas.height,
+                baseColor = '#e1e1e1',
+                coverColor = '#fe4d43',
+                PI = Math.PI,
+                sR = sR || 1 / 2 * PI;
+
+            var finalRadian = sR + ((PI + (PI - sR) * 2) * percent / 100);      // 将圆弧分成100等份，计算圆弧终点弧度
+            var step = (PI + (PI - sR) * 2) / 100;      // 一个 1% 对应的弧度大小
+            var text = 0, incre = 10;
+
+            /*****************************************************************
+            var timerCount = setInterval(function() {
+                
+                ctx.clearRect(0, 0, cWidth, cHeight);
+
+                var endRadian = sR + step * text;
+
+                // 画灰色圆弧
+                drawCanvas(cWidth / 2, cHeight / 2, 80, sR, sR + (PI + (PI - sR) * 2), baseColor, 6);
+
+                // 画橙色圆弧
+                drawCanvas(cWidth / 2, cHeight / 2, 80, sR, endRadian, coverColor, 6);
+
+                // 画红色圆头
+                // 红色圆头其实就是一个圆，关键的是找到其圆心，涉及到三角函数知识，自己画个图一看就明了
+                var angle = 2 * PI - endRadian;     // 转换成逆时针方向的弧度（三角函数中的）
+                xPos = Math.cos(angle) * 80 + cWidth / 2;
+                yPos = -Math.sin(angle) * 80 + cHeight / 2;
+
+                drawCanvas(xPos, yPos, 3, 0, 2 * PI, coverColor, 3);
+
+                ctx.fillStyle = coverColor;
+                ctx.font = '50px 微软雅黑';
+                var textWidth = ctx.measureText(text).width;
+                ctx.fillText(text, cWidth / 2 - textWidth / 2, cHeight / 2 + 10);
+                ctx.font = '18px 微软雅黑';
+                var textWidth2 = ctx.measureText('积极型(中高)').width;
+                ctx.fillText('积极型(中高)', cWidth / 2 - textWidth2 / 2, cHeight / 2 + 50);
+                text++;
+
+                if (endRadian.toFixed(2) >= finalRadian.toFixed(2)) {
+                    clearInterval(timerCount);
+                }
+
+            }, 30);
+            ******************************************************************/
+
+            window.requestAnimationFrame(paint);
+
+            function paint() {
+                ctx.clearRect(0, 0, cWidth, cHeight);
+
+                var endRadian = sR + step * text;
+
+                // 画灰色圆弧
+                drawCanvas(cWidth / 2, cHeight / 2, 80, sR, sR + (PI + (PI - sR) * 2), baseColor, 6);
+
+                // 画橙色圆弧
+                drawCanvas(cWidth / 2, cHeight / 2, 80, sR, endRadian, coverColor, 6);
+
+                // 画红色圆头
+                // 红色圆头其实就是一个圆，关键的是找到其圆心，涉及到三角函数知识，自己画个图一看就明了
+                var angle = 2 * PI - endRadian;     // 转换成逆时针方向的弧度（三角函数中的）
+                var xPos = Math.cos(angle) * 80 + cWidth / 2;
+                var yPos = -Math.sin(angle) * 80 + cHeight / 2;
+
+                drawCanvas(xPos, yPos, 3, 0, 2 * PI, coverColor, 3);
+
+                ctx.fillStyle = coverColor;
+                ctx.font = '50px Hiragino Sans GB,Helvetica,STHeiti STXihei,Microsoft YaHei,Arial';
+                var textWidth = ctx.measureText(text).width;
+                ctx.fillText(text, cWidth / 2 - textWidth / 2, cHeight / 2 + 10);
+                ctx.font = '18px Hiragino Sans GB,Helvetica,STHeiti STXihei,Microsoft YaHei,Arial';
+                var textWidth2 = ctx.measureText('积极型(中高)').width;
+                ctx.fillText('积极型(中高)', cWidth / 2 - textWidth2 / 2, cHeight / 2 + 50);
+                // text += incre;
+                text++;
+
+                if (endRadian.toFixed(2) < finalRadian.toFixed(2)) {
+                    window.requestAnimationFrame(paint);
+                }
+            }
+
+            function drawCanvas(x, y, r, sRadian, eRadian, color, lineWidth) {
+                ctx.beginPath();
+                ctx.lineCap = 'round';      // lineCap属性设置或返回线条末端线帽的样式，butt|round|square; IE9+ 以上支持
+                ctx.strokeStyle = color;
+                ctx.lineWidth = lineWidth;
+                ctx.arc(x, y, r, sRadian, eRadian, false);
+                ctx.stroke();
+
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>
