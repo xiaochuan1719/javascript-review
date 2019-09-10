@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test InputHelper</title>
+    
+    <style type="text/css">
+        input {
+            width: 240px;
+            height: 26px;
+        line-height: 26px;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="main">
+
+    <input type="text" class="bank-input" placeholder="请输入银行卡号" maxlength="25" onkeyup="value=value.replace(/[^\d]/g,'')">
+
+</div>
+    
+<script src="https://unpkg.com/jquery@1.11.3/dist/jquery.js" crossorigin></script>
+<!-- <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script> -->
+<script src="./InputHelper.js"></script>
+<script>
+
+    $('input.bank-input').bankInputEx();
+
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="main">
+        <input type="password" placeholder="请输入密码">
+        <button>Click Me</button>
+    </div>
+
+    <script src="https://unpkg.com/jquery@1.9.1/jquery.js"></script>
+    <script>
+        // 这段代码在IE8及一下版本执行异常或无效
+        $('button').on('click', function () {
+            var $this = $(this);
+            var type = $this.prev('input').attr('type');
+            console.log(type)
+            if (type === 'password') {
+                $this.prev('input').attr('type', 'text')
+            } else {
+                $this.prev('input').attr('type', 'password')
+            }
+        });
+    </script>
+</body>
+</html>

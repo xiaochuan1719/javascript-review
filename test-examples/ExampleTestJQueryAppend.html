@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="main">
+
+        <ul class="list">
+            <li>xxxxxxxxxxx<a class="link" data-readed="1">dddddddd</a></li>
+            <li>xxxxxxxxxxx<a class="link" data-readed="0">dddddddd</a></li>
+        </ul>
+
+    </div>
+
+    <!-- <script src="https://unpkg.com/jquery@1.9.1/jquery.js"></script> -->
+    <script src="https://unpkg.com/jquery@3.4.1/dist/jquery.js" crossorigin ></script>
+    <script>
+        // $('ul').append('<li>12312312313132</li>').append('<li>6666888999999</li>');
+
+        console.log($('a[data-readed="1"]').length);
+        console.log($('a.link').length);
+
+    </script>
+
+</body>
+</html>
