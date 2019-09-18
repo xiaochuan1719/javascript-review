@@ -4,7 +4,7 @@ $('#btn1').on('click', function () {
 
 $('#btn2').on('click', _.debounce(function() {
     console.log('btn2 =>> ', new Date().getTime());
-}, 6000, {
+}, 2000, {
     // 'maxWait': 0,
     'leading': true,
     'trailing': false
